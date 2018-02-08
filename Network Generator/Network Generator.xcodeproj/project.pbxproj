@@ -6,140 +6,62 @@
 	objectVersion = 48;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		60238302202C55910000F97B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 602382FE202C55900000F97B /* Scheduler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 602382F4202C55900000F97B;
-			remoteInfo = Scheduler;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		602382C9202C54E40000F97B /* Network Generator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Network Generator.xcodeproj"; path = "Network Generator/Network Generator.xcodeproj"; sourceTree = "<group>"; };
-		602382D8202C55420000F97B /* Simulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simulator.xcodeproj; path = Simulator/Simulator.xcodeproj; sourceTree = "<group>"; };
-		602382E7202C556A0000F97B /* Evaluator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Evaluator.xcodeproj; path = Evaluator/Evaluator.xcodeproj; sourceTree = "<group>"; };
-		602382FE202C55900000F97B /* Scheduler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Scheduler.xcodeproj; path = Scheduler/Scheduler.xcodeproj; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
 /* Begin PBXGroup section */
-		601ED34F2029EC6D00E60F3A = {
-			isa = PBXGroup;
-			children = (
-				602382FE202C55900000F97B /* Scheduler.xcodeproj */,
-				602382E7202C556A0000F97B /* Evaluator.xcodeproj */,
-				602382D8202C55420000F97B /* Simulator.xcodeproj */,
-				602382C9202C54E40000F97B /* Network Generator.xcodeproj */,
-			);
-			sourceTree = "<group>";
-		};
-		602382CA202C54E40000F97B /* Products */ = {
+		602382BE202C54E40000F97B = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		602382D9202C55420000F97B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		602382E8202C556A0000F97B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		602382FF202C55900000F97B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				60238303202C55910000F97B /* Scheduler */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
-		601ED3542029EC6D00E60F3A /* Organic Scheduler */ = {
+		602382C3202C54E40000F97B /* Network Generator */ = {
 			isa = PBXLegacyTarget;
 			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 601ED3572029EC6D00E60F3A /* Build configuration list for PBXLegacyTarget "Organic Scheduler" */;
+			buildConfigurationList = 602382C6202C54E40000F97B /* Build configuration list for PBXLegacyTarget "Network Generator" */;
 			buildPhases = (
 			);
 			buildToolPath = /Users/fpo01/anaconda3/bin/python36;
 			dependencies = (
 			);
-			name = "Organic Scheduler";
+			name = "Network Generator";
 			passBuildSettingsInEnvironment = 1;
-			productName = "Organic Scheduler";
+			productName = "Network Generator";
 		};
 /* End PBXLegacyTarget section */
 
 /* Begin PBXProject section */
-		601ED3502029EC6D00E60F3A /* Project object */ = {
+		602382BF202C54E40000F97B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Francisco Pozo";
 				TargetAttributes = {
-					601ED3542029EC6D00E60F3A = {
+					602382C3202C54E40000F97B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 601ED3532029EC6D00E60F3A /* Build configuration list for PBXProject "Organic Scheduler" */;
+			buildConfigurationList = 602382C2202C54E40000F97B /* Build configuration list for PBXProject "Network Generator" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 601ED34F2029EC6D00E60F3A;
+			mainGroup = 602382BE202C54E40000F97B;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 602382E8202C556A0000F97B /* Products */;
-					ProjectRef = 602382E7202C556A0000F97B /* Evaluator.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382CA202C54E40000F97B /* Products */;
-					ProjectRef = 602382C9202C54E40000F97B /* Network Generator.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382FF202C55900000F97B /* Products */;
-					ProjectRef = 602382FE202C55900000F97B /* Scheduler.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382D9202C55420000F97B /* Products */;
-					ProjectRef = 602382D8202C55420000F97B /* Simulator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				601ED3542029EC6D00E60F3A /* Organic Scheduler */,
+				602382C3202C54E40000F97B /* Network Generator */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		60238303202C55910000F97B /* Scheduler */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = Scheduler;
-			remoteRef = 60238302202C55910000F97B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin XCBuildConfiguration section */
-		601ED3552029EC6D00E60F3A /* Debug */ = {
+		602382C4202C54E40000F97B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -191,7 +113,7 @@
 			};
 			name = Debug;
 		};
-		601ED3562029EC6D00E60F3A /* Release */ = {
+		602382C5202C54E40000F97B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +158,7 @@
 			};
 			name = Release;
 		};
-		601ED3582029EC6D00E60F3A /* Debug */ = {
+		602382C7202C54E40000F97B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -250,7 +172,7 @@
 			};
 			name = Debug;
 		};
-		601ED3592029EC6D00E60F3A /* Release */ = {
+		602382C8202C54E40000F97B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -264,25 +186,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		601ED3532029EC6D00E60F3A /* Build configuration list for PBXProject "Organic Scheduler" */ = {
+		602382C2202C54E40000F97B /* Build configuration list for PBXProject "Network Generator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				601ED3552029EC6D00E60F3A /* Debug */,
-				601ED3562029EC6D00E60F3A /* Release */,
+				602382C4202C54E40000F97B /* Debug */,
+				602382C5202C54E40000F97B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		601ED3572029EC6D00E60F3A /* Build configuration list for PBXLegacyTarget "Organic Scheduler" */ = {
+		602382C6202C54E40000F97B /* Build configuration list for PBXLegacyTarget "Network Generator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				601ED3582029EC6D00E60F3A /* Debug */,
-				601ED3592029EC6D00E60F3A /* Release */,
+				602382C7202C54E40000F97B /* Debug */,
+				602382C8202C54E40000F97B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 601ED3502029EC6D00E60F3A /* Project object */;
+	rootObject = 602382BF202C54E40000F97B /* Project object */;
 }

@@ -6,140 +6,127 @@
 	objectVersion = 48;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		60238302202C55910000F97B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 602382FE202C55900000F97B /* Scheduler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 602382F4202C55900000F97B;
-			remoteInfo = Scheduler;
+/* Begin PBXBuildFile section */
+		602382F8202C55900000F97B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 602382F7202C55900000F97B /* main.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		602382F2202C55900000F97B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
 		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		602382C9202C54E40000F97B /* Network Generator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Network Generator.xcodeproj"; path = "Network Generator/Network Generator.xcodeproj"; sourceTree = "<group>"; };
-		602382D8202C55420000F97B /* Simulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simulator.xcodeproj; path = Simulator/Simulator.xcodeproj; sourceTree = "<group>"; };
-		602382E7202C556A0000F97B /* Evaluator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Evaluator.xcodeproj; path = Evaluator/Evaluator.xcodeproj; sourceTree = "<group>"; };
-		602382FE202C55900000F97B /* Scheduler.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Scheduler.xcodeproj; path = Scheduler/Scheduler.xcodeproj; sourceTree = "<group>"; };
+		602382F4202C55900000F97B /* Scheduler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Scheduler; sourceTree = BUILT_PRODUCTS_DIR; };
+		602382F7202C55900000F97B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		602382F1202C55900000F97B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		601ED34F2029EC6D00E60F3A = {
+		602382EB202C55900000F97B = {
 			isa = PBXGroup;
 			children = (
-				602382FE202C55900000F97B /* Scheduler.xcodeproj */,
-				602382E7202C556A0000F97B /* Evaluator.xcodeproj */,
-				602382D8202C55420000F97B /* Simulator.xcodeproj */,
-				602382C9202C54E40000F97B /* Network Generator.xcodeproj */,
+				602382F6202C55900000F97B /* Scheduler */,
+				602382F5202C55900000F97B /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		602382CA202C54E40000F97B /* Products */ = {
+		602382F5202C55900000F97B /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				602382F4202C55900000F97B /* Scheduler */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		602382D9202C55420000F97B /* Products */ = {
+		602382F6202C55900000F97B /* Scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				602382F7202C55900000F97B /* main.c */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		602382E8202C556A0000F97B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		602382FF202C55900000F97B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				60238303202C55910000F97B /* Scheduler */,
-			);
-			name = Products;
+			path = Scheduler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		601ED3542029EC6D00E60F3A /* Organic Scheduler */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = 601ED3572029EC6D00E60F3A /* Build configuration list for PBXLegacyTarget "Organic Scheduler" */;
+/* Begin PBXNativeTarget section */
+		602382F3202C55900000F97B /* Scheduler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 602382FB202C55900000F97B /* Build configuration list for PBXNativeTarget "Scheduler" */;
 			buildPhases = (
+				602382F0202C55900000F97B /* Sources */,
+				602382F1202C55900000F97B /* Frameworks */,
+				602382F2202C55900000F97B /* CopyFiles */,
 			);
-			buildToolPath = /Users/fpo01/anaconda3/bin/python36;
+			buildRules = (
+			);
 			dependencies = (
 			);
-			name = "Organic Scheduler";
-			passBuildSettingsInEnvironment = 1;
-			productName = "Organic Scheduler";
+			name = Scheduler;
+			productName = Scheduler;
+			productReference = 602382F4202C55900000F97B /* Scheduler */;
+			productType = "com.apple.product-type.tool";
 		};
-/* End PBXLegacyTarget section */
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		601ED3502029EC6D00E60F3A /* Project object */ = {
+		602382EC202C55900000F97B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Francisco Pozo";
 				TargetAttributes = {
-					601ED3542029EC6D00E60F3A = {
+					602382F3202C55900000F97B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 601ED3532029EC6D00E60F3A /* Build configuration list for PBXProject "Organic Scheduler" */;
+			buildConfigurationList = 602382EF202C55900000F97B /* Build configuration list for PBXProject "Scheduler" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 601ED34F2029EC6D00E60F3A;
+			mainGroup = 602382EB202C55900000F97B;
+			productRefGroup = 602382F5202C55900000F97B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 602382E8202C556A0000F97B /* Products */;
-					ProjectRef = 602382E7202C556A0000F97B /* Evaluator.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382CA202C54E40000F97B /* Products */;
-					ProjectRef = 602382C9202C54E40000F97B /* Network Generator.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382FF202C55900000F97B /* Products */;
-					ProjectRef = 602382FE202C55900000F97B /* Scheduler.xcodeproj */;
-				},
-				{
-					ProductGroup = 602382D9202C55420000F97B /* Products */;
-					ProjectRef = 602382D8202C55420000F97B /* Simulator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				601ED3542029EC6D00E60F3A /* Organic Scheduler */,
+				602382F3202C55900000F97B /* Scheduler */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		60238303202C55910000F97B /* Scheduler */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = Scheduler;
-			remoteRef = 60238302202C55910000F97B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
+/* Begin PBXSourcesBuildPhase section */
+		602382F0202C55900000F97B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				602382F8202C55900000F97B /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXReferenceProxy section */
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		601ED3552029EC6D00E60F3A /* Debug */ = {
+		602382F9202C55900000F97B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -168,6 +155,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -186,12 +174,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
-		601ED3562029EC6D00E60F3A /* Release */ = {
+		602382FA202C55900000F97B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -220,6 +210,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -232,31 +223,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
-		601ED3582029EC6D00E60F3A /* Debug */ = {
+		602382FC202C55900000F97B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		601ED3592029EC6D00E60F3A /* Release */ = {
+		602382FD202C55900000F97B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -264,25 +248,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		601ED3532029EC6D00E60F3A /* Build configuration list for PBXProject "Organic Scheduler" */ = {
+		602382EF202C55900000F97B /* Build configuration list for PBXProject "Scheduler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				601ED3552029EC6D00E60F3A /* Debug */,
-				601ED3562029EC6D00E60F3A /* Release */,
+				602382F9202C55900000F97B /* Debug */,
+				602382FA202C55900000F97B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		601ED3572029EC6D00E60F3A /* Build configuration list for PBXLegacyTarget "Organic Scheduler" */ = {
+		602382FB202C55900000F97B /* Build configuration list for PBXNativeTarget "Scheduler" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				601ED3582029EC6D00E60F3A /* Debug */,
-				601ED3592029EC6D00E60F3A /* Release */,
+				602382FC202C55900000F97B /* Debug */,
+				602382FD202C55900000F97B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 601ED3502029EC6D00E60F3A /* Project object */;
+	rootObject = 602382EC202C55900000F97B /* Project object */;
 }
