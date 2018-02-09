@@ -10,6 +10,7 @@
 		6023830A202DA4170000F97B /* Link.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Link.py; sourceTree = "<group>"; };
 		6023830B202DA4170000F97B /* Node.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Node.py; sourceTree = "<group>"; };
 		6023830C202DA4170000F97B /* __init__.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = __init__.py; sourceTree = "<group>"; };
+		6023830D202DA50E0000F97B /* Frame.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Frame.py; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -23,6 +24,7 @@
 		60238309202C7B6E0000F97B /* Network Generator */ = {
 			isa = PBXGroup;
 			children = (
+				6023830D202DA50E0000F97B /* Frame.py */,
 				6023830C202DA4170000F97B /* __init__.py */,
 				6023830A202DA4170000F97B /* Link.py */,
 				6023830B202DA4170000F97B /* Node.py */,

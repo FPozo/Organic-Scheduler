@@ -20,13 +20,13 @@
       <file leaf-file-name="Link.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Network Generator/Link.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="230">
+              <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
               <folding>
                 <element signature="e#25#1355#1" expanded="false" />
                 <element signature="e#1407#1484#0" expanded="false" />
                 <element signature="e#1407#1453#1" expanded="false" />
-                <element signature="e#1503#3750#0" expanded="false" />
+                <element signature="e#1503#3754#0" expanded="false" />
                 <element signature="e#1503#1583#1" expanded="false" />
                 <element signature="e#1654#2095#0" expanded="false" />
                 <element signature="e#1654#1954#1" expanded="false" />
@@ -34,12 +34,12 @@
                 <element signature="e#2128#2256#1" expanded="false" />
                 <element signature="e#2542#2690#0" expanded="false" />
                 <element signature="e#2542#2662#1" expanded="false" />
-                <element signature="e#2734#3074#0" expanded="false" />
+                <element signature="e#2734#3078#0" expanded="false" />
                 <element signature="e#2734#2857#1" expanded="false" />
-                <element signature="e#3110#3249#0" expanded="false" />
-                <element signature="e#3110#3217#1" expanded="false" />
-                <element signature="e#3296#3592#0" expanded="false" />
-                <element signature="e#3296#3427#1" expanded="false" />
+                <element signature="e#3114#3253#0" expanded="false" />
+                <element signature="e#3114#3221#1" expanded="false" />
+                <element signature="e#3300#3596#0" expanded="false" />
+                <element signature="e#3300#3431#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -54,26 +54,58 @@
                 <element signature="e#25#1476#1" expanded="false" />
                 <element signature="e#1528#1635#0" expanded="false" />
                 <element signature="e#1528#1580#1" expanded="false" />
-                <element signature="e#1654#2492#0" expanded="false" />
+                <element signature="e#1654#2915#0" expanded="false" />
                 <element signature="e#1654#1721#1" expanded="false" />
                 <element signature="e#1766#1928#0" expanded="false" />
                 <element signature="e#1766#1893#1" expanded="false" />
-                <element signature="e#1975#2274#0" expanded="false" />
-                <element signature="e#1975#2093#1" expanded="false" />
-                <element signature="e#2310#2442#0" expanded="false" />
-                <element signature="e#2310#2410#1" expanded="false" />
+                <element signature="e#1961#2351#0" expanded="false" />
+                <element signature="e#1961#2097#1" expanded="false" />
+                <element signature="e#2398#2697#0" expanded="false" />
+                <element signature="e#2398#2516#1" expanded="false" />
+                <element signature="e#2733#2865#0" expanded="false" />
+                <element signature="e#2733#2833#1" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Network Generator/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
               <caret line="20" column="120" lean-forward="true" selection-start-line="20" selection-start-column="120" selection-end-line="20" selection-end-column="120" />
               <folding>
                 <element signature="e#25#2322#1" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Frame.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Network Generator/Frame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+              <folding>
+                <element signature="e#25#2081#1" expanded="false" />
+                <element signature="e#2101#10604#0" expanded="false" />
+                <element signature="e#2221#2579#0" expanded="false" />
+                <element signature="e#2221#2340#1" expanded="false" />
+                <element signature="e#2620#2753#0" expanded="false" />
+                <element signature="e#2811#3511#0" expanded="false" />
+                <element signature="e#3555#3700#0" expanded="false" />
+                <element signature="e#3744#4874#0" expanded="false" />
+                <element signature="e#4911#5147#0" expanded="false" />
+                <element signature="e#5189#5707#0" expanded="false" />
+                <element signature="e#5743#5867#0" expanded="false" />
+                <element signature="e#5927#6351#0" expanded="false" />
+                <element signature="e#6396#6547#0" expanded="false" />
+                <element signature="e#6593#6940#0" expanded="false" />
+                <element signature="e#6978#7120#0" expanded="false" />
+                <element signature="e#7170#7801#0" expanded="false" />
+                <element signature="e#7841#7989#0" expanded="false" />
+                <element signature="e#8049#9522#0" expanded="false" />
+                <element signature="e#9570#9758#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -93,8 +125,9 @@
       <list>
         <option value="$PROJECT_DIR$/Network Generator.py" />
         <option value="$PROJECT_DIR$/Network Generator/__init__.py" />
-        <option value="$PROJECT_DIR$/Network Generator/Link.py" />
         <option value="$PROJECT_DIR$/Network Generator/Node.py" />
+        <option value="$PROJECT_DIR$/Network Generator/Link.py" />
+        <option value="$PROJECT_DIR$/Network Generator/Frame.py" />
       </list>
     </option>
   </component>
@@ -104,7 +137,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -177,7 +210,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -185,7 +219,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15773809" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15773809" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -220,6 +254,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Network Generator/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="20" column="120" lean-forward="true" selection-start-line="20" selection-start-column="120" selection-end-line="20" selection-end-column="120" />
+          <folding>
+            <element signature="e#25#2322#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Network Generator/Link.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="25" column="6" lean-forward="false" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
+          <folding>
+            <element signature="e#25#1355#1" expanded="false" />
+            <element signature="e#1407#1484#0" expanded="false" />
+            <element signature="e#1407#1453#1" expanded="false" />
+            <element signature="e#1503#3754#0" expanded="false" />
+            <element signature="e#1503#1583#1" expanded="false" />
+            <element signature="e#1654#2095#0" expanded="false" />
+            <element signature="e#1654#1954#1" expanded="false" />
+            <element signature="e#2128#2505#0" expanded="false" />
+            <element signature="e#2128#2256#1" expanded="false" />
+            <element signature="e#2542#2690#0" expanded="false" />
+            <element signature="e#2542#2662#1" expanded="false" />
+            <element signature="e#2734#3078#0" expanded="false" />
+            <element signature="e#2734#2857#1" expanded="false" />
+            <element signature="e#3114#3253#0" expanded="false" />
+            <element signature="e#3114#3221#1" expanded="false" />
+            <element signature="e#3300#3596#0" expanded="false" />
+            <element signature="e#3300#3431#1" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Network Generator/Node.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -228,50 +298,44 @@
             <element signature="e#25#1476#1" expanded="false" />
             <element signature="e#1528#1635#0" expanded="false" />
             <element signature="e#1528#1580#1" expanded="false" />
-            <element signature="e#1654#2492#0" expanded="false" />
+            <element signature="e#1654#2915#0" expanded="false" />
             <element signature="e#1654#1721#1" expanded="false" />
             <element signature="e#1766#1928#0" expanded="false" />
             <element signature="e#1766#1893#1" expanded="false" />
-            <element signature="e#1975#2274#0" expanded="false" />
-            <element signature="e#1975#2093#1" expanded="false" />
-            <element signature="e#2310#2442#0" expanded="false" />
-            <element signature="e#2310#2410#1" expanded="false" />
+            <element signature="e#1961#2351#0" expanded="false" />
+            <element signature="e#1961#2097#1" expanded="false" />
+            <element signature="e#2398#2697#0" expanded="false" />
+            <element signature="e#2398#2516#1" expanded="false" />
+            <element signature="e#2733#2865#0" expanded="false" />
+            <element signature="e#2733#2833#1" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Network Generator/Link.py">
+    <entry file="file://$PROJECT_DIR$/Network Generator/Frame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="115">
+          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding>
-            <element signature="e#25#1355#1" expanded="false" />
-            <element signature="e#1407#1484#0" expanded="false" />
-            <element signature="e#1407#1453#1" expanded="false" />
-            <element signature="e#1503#3750#0" expanded="false" />
-            <element signature="e#1503#1583#1" expanded="false" />
-            <element signature="e#1654#2095#0" expanded="false" />
-            <element signature="e#1654#1954#1" expanded="false" />
-            <element signature="e#2128#2505#0" expanded="false" />
-            <element signature="e#2128#2256#1" expanded="false" />
-            <element signature="e#2542#2690#0" expanded="false" />
-            <element signature="e#2542#2662#1" expanded="false" />
-            <element signature="e#2734#3074#0" expanded="false" />
-            <element signature="e#2734#2857#1" expanded="false" />
-            <element signature="e#3110#3249#0" expanded="false" />
-            <element signature="e#3110#3217#1" expanded="false" />
-            <element signature="e#3296#3592#0" expanded="false" />
-            <element signature="e#3296#3427#1" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Network Generator/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="20" column="120" lean-forward="true" selection-start-line="20" selection-start-column="120" selection-end-line="20" selection-end-column="120" />
-          <folding>
-            <element signature="e#25#2322#1" expanded="false" />
+            <element signature="e#25#2081#1" expanded="false" />
+            <element signature="e#2101#10604#0" expanded="false" />
+            <element signature="e#2221#2579#0" expanded="false" />
+            <element signature="e#2221#2340#1" expanded="false" />
+            <element signature="e#2620#2753#0" expanded="false" />
+            <element signature="e#2811#3511#0" expanded="false" />
+            <element signature="e#3555#3700#0" expanded="false" />
+            <element signature="e#3744#4874#0" expanded="false" />
+            <element signature="e#4911#5147#0" expanded="false" />
+            <element signature="e#5189#5707#0" expanded="false" />
+            <element signature="e#5743#5867#0" expanded="false" />
+            <element signature="e#5927#6351#0" expanded="false" />
+            <element signature="e#6396#6547#0" expanded="false" />
+            <element signature="e#6593#6940#0" expanded="false" />
+            <element signature="e#6978#7120#0" expanded="false" />
+            <element signature="e#7170#7801#0" expanded="false" />
+            <element signature="e#7841#7989#0" expanded="false" />
+            <element signature="e#8049#9522#0" expanded="false" />
+            <element signature="e#9570#9758#0" expanded="false" />
           </folding>
         </state>
       </provider>

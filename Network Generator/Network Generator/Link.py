@@ -65,7 +65,7 @@ class Link:
         :param speed: Link speed in MB/s
         :type speed: int
         """
-        if type(speed) is not int or float:
+        if not isinstance(speed, (int, float)):
             raise TypeError('The speed should be a number')
         if speed <= 0:
             raise ValueError('The speed should be positive')

@@ -38,6 +38,19 @@ class Node:
         """
         self.__set_type(node_type)
 
+    def __str__(self):
+        """
+        Returns a string with the information of the class
+        :return: information of the class
+        :rtype: str
+        """
+        if self.__node_type is NodeType.end_system:
+            return 'The node is an End System'
+        elif self.__node_type is NodeType.switch:
+            return 'The node is a Switch'
+        else:
+            return 'The node is an Access Point'
+
     def __set_type(self, node_type):
         """
         Set the type of the node
