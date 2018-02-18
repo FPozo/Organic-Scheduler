@@ -66,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Network.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Network Generator/Network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3542">
+            <state relative-caret-position="625">
               <caret line="1303" column="56" lean-forward="false" selection-start-line="1303" selection-start-column="56" selection-end-line="1303" selection-end-column="56" />
               <folding>
                 <element signature="e#25#1960#1" expanded="false" />
@@ -214,7 +214,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Network.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Network.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/XML Files/Network.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="919">
@@ -1151,6 +1151,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="253" column="0" lean-forward="false" selection-start-line="253" selection-start-column="0" selection-end-line="253" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,9 +1163,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/XML Files/Network.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="298" column="31" lean-forward="false" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Network Generator/Network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3542">
+        <state relative-caret-position="625">
           <caret line="1303" column="56" lean-forward="false" selection-start-line="1303" selection-start-column="56" selection-end-line="1303" selection-end-column="56" />
           <folding>
             <element signature="e#25#1960#1" expanded="false" />
@@ -1305,14 +1314,6 @@
             <element signature="e#68077#69322#0" expanded="false" />
             <element signature="e#69375#70200#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/XML Files/Network.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="298" column="31" lean-forward="false" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
