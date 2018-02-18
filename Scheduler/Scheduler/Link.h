@@ -40,7 +40,7 @@ typedef struct Link {
 /* TYPEDEF ERRORS */
 
 #define SPEED_NEGATIVE -1
-#define NULL_POINTER -2
+#define NULL_LINK_POINTER -2
 
 /* CODE DEFINITIONS */
 
@@ -77,7 +77,7 @@ int get_link_speed(Link *link_pt);
  @param speed link speed
  @return 0 if correct, error code otherwise
  */
-int set_link_speed(Link *link_pt, int speed) {
+int set_link_speed(Link *link_pt, int speed);
 
 /**
  Gets the type of the link (wired or wireless)

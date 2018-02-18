@@ -1,6 +1,6 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  *                                                                                                                     *
- *  Link.h                                                                                                             *
+ *  Link.c                                                                                                             *
  *  Organic Scheduler                                                                                                  *
  *                                                                                                                     *
  *  Created by Francisco Pozo on 18/02/18.                                                                             *
@@ -21,8 +21,8 @@
 int init_link(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     
     link_pt->speed = -1;
@@ -41,12 +41,12 @@ int init_link(Link *link_pt) {
 int set_link(Link *link_pt, int speed, LinkType type) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     if (speed <= 0) {
-        printf('The given link speed has to be positive')
-        return SPEED_NEGATIVE
+        printf("The given link speed has to be positive");
+        return SPEED_NEGATIVE;
     }
     
     link_pt->speed = speed;
@@ -63,8 +63,8 @@ int set_link(Link *link_pt, int speed, LinkType type) {
 int get_link_speed(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     
     return link_pt->speed;
@@ -72,19 +72,24 @@ int get_link_speed(Link *link_pt) {
 
 /**
  Sets the speed of the link
+ 
+ @param link_pt pointer to the link
+ @param speed link speed
+ @return 0 if correct, error code otherwise
  */
 int set_link_speed(Link *link_pt, int speed) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     if (speed <= 0) {
-        printf('The given link speed has to be positive')
-        return SPEED_NEGATIVE
+        printf("The given link speed has to be positive");
+        return SPEED_NEGATIVE;
     }
     
     link_pt->speed = speed;
+    return 0;
 }
 
 /**
@@ -96,8 +101,8 @@ int set_link_speed(Link *link_pt, int speed) {
 LinkType get_link_type(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     
     return link_pt->type;
@@ -113,9 +118,10 @@ LinkType get_link_type(Link *link_pt) {
 LinkType set_link_type(Link *link_pt, LinkType type) {
     
     if (link_pt == NULL) {
-        printf('The given link pointer is null')
-        return NULL_POINTER;
+        printf("The given link pointer is null");
+        return NULL_LINK_POINTER;
     }
     
     link_pt->type = type;
+    return 0;
 }
