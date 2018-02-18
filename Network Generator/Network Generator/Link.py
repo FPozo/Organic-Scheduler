@@ -15,18 +15,34 @@
 from enum import Enum
 
 
-class LinkType(Enum):
-    """
-    Class to define the link types
-    """
-    wired = 1
-    wireless = 2
-
-
 class Link:
     """
     Class that contains the information of the link (speed and type)
     """
+
+    class LinkType(Enum):
+        """
+        Class to define the link types
+        """
+        wired = 1
+        wireless = 2
+
+        @staticmethod
+        def from_string(string):
+            """
+            Return the LinkType that matches the given string
+            :param string: string with the link type
+            :type string: str
+            :return: LinkType object that matches the given string
+            :rtype: Link.LinkType
+            """
+            if not isinstance(string, str):
+                raise TypeError('The given string should be a string')
+            if string == 'wired':
+                return Link.LinkType.wired
+            if string == 'wireless':
+                return Link.LinkType.wireless
+            raise ValueError('The given string does not match any value from the LinkType class')
 
     def __init__(self, speed=100, link_type=LinkType.wired):
         """
@@ -46,7 +62,7 @@ class Link:
         :rtype: str
         """
         # Check the type of the link
-        if self.__link_type == LinkType.wired:
+        if self.__link_type == self.LinkType.wired:
             return "Wired link with speed " + str(self.__speed) + " MB/s"
         else:
             return "Wireless link with speed " + str(self.__speed) + " MB/s"
@@ -85,7 +101,7 @@ class Link:
         :param link_type: link type
         :type link_type: LinkType
         """
-        if link_type not in LinkType:
+        if link_type not in self.LinkType:
             raise TypeError('Only wired and wireless link supported now, check LinkType')
         self.__link_type = link_type
 
