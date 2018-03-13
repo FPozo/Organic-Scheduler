@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		602382F8202C55900000F97B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 602382F7202C55900000F97B /* main.c */; };
+		606BFAF2205812970067D25C /* Scheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 606BFAF1205812970067D25C /* Scheduler.c */; };
 		607A8DAB20399CDA0088659B /* Link.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DAA20399CDA0088659B /* Link.c */; };
 		607A8DAE2039A5D00088659B /* Frame.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DAD2039A5D00088659B /* Frame.c */; };
+		607A8DB1203C2EAE0088659B /* Network.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DB0203C2EAE0088659B /* Network.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,10 +29,15 @@
 /* Begin PBXFileReference section */
 		602382F4202C55900000F97B /* Scheduler */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Scheduler; sourceTree = BUILT_PRODUCTS_DIR; };
 		602382F7202C55900000F97B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		606BFAF0205812970067D25C /* Scheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scheduler.h; sourceTree = "<group>"; };
+		606BFAF1205812970067D25C /* Scheduler.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Scheduler.c; sourceTree = "<group>"; };
 		607A8DA920399CDA0088659B /* Link.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
 		607A8DAA20399CDA0088659B /* Link.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Link.c; sourceTree = "<group>"; };
 		607A8DAC2039A5D00088659B /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
 		607A8DAD2039A5D00088659B /* Frame.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Frame.c; sourceTree = "<group>"; };
+		607A8DAF203C2EAE0088659B /* Network.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		607A8DB0203C2EAE0088659B /* Network.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Network.c; sourceTree = "<group>"; };
+		607A8DB2203C4FCB0088659B /* XML Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "XML Files"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +54,7 @@
 		602382EB202C55900000F97B = {
 			isa = PBXGroup;
 			children = (
+				607A8DB2203C4FCB0088659B /* XML Files */,
 				602382F6202C55900000F97B /* Scheduler */,
 				602382F5202C55900000F97B /* Products */,
 			);
@@ -68,6 +76,10 @@
 				607A8DAA20399CDA0088659B /* Link.c */,
 				607A8DAC2039A5D00088659B /* Frame.h */,
 				607A8DAD2039A5D00088659B /* Frame.c */,
+				607A8DAF203C2EAE0088659B /* Network.h */,
+				607A8DB0203C2EAE0088659B /* Network.c */,
+				606BFAF0205812970067D25C /* Scheduler.h */,
+				606BFAF1205812970067D25C /* Scheduler.c */,
 			);
 			path = Scheduler;
 			sourceTree = "<group>";
@@ -129,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607A8DB1203C2EAE0088659B /* Network.c in Sources */,
+				606BFAF2205812970067D25C /* Scheduler.c in Sources */,
 				607A8DAE2039A5D00088659B /* Frame.c in Sources */,
 				602382F8202C55900000F97B /* main.c in Sources */,
 				607A8DAB20399CDA0088659B /* Link.c in Sources */,
@@ -257,6 +271,7 @@
 					/usr/local/lib,
 					/Library/gurobi752/mac64/lib,
 				);
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -277,6 +292,7 @@
 					/usr/local/lib,
 					/Library/gurobi752/mac64/lib,
 				);
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

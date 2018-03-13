@@ -9,9 +9,11 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include <stdio.h>
+#include "Scheduler.h"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
     printf("Hello, World!\n");
+    one_shot_scheduling("XML Files/Network.xml", "XML Files/Schedule.xml");
     return 0;
 }

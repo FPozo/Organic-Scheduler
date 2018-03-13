@@ -94,4 +94,4 @@ LinkType get_link_type(Link *link_pt);
  @param type link type
  @return 0 if correct, error code otherwise
  */
-LinkType set_link_type(Link *link_pt, LinkType type);
+int set_link_type(Link *link_pt, LinkType type);

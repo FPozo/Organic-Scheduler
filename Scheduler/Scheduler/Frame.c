@@ -23,7 +23,7 @@
 int init_frame(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -45,11 +45,11 @@ int init_frame(Frame *frame_pt) {
 int init_hash(Frame *frame_pt, int num_links) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (num_links <= 0) {
-        printf("The number of links should be positive");
+        printf("The number of links should be positive\n");
         return LINK_NOT_NATURAL;
     }
     
@@ -69,7 +69,7 @@ int init_hash(Frame *frame_pt, int num_links) {
 long long int get_period(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -86,11 +86,11 @@ long long int get_period(Frame *frame_pt) {
 int set_period(Frame *frame_pt, long long int period) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (period <= 0) {
-        printf("The period should be a positive number");
+        printf("The period should be a positive number\n");
         return PERIOD_NOT_NATURAL;
     }
     
@@ -107,7 +107,7 @@ int set_period(Frame *frame_pt, long long int period) {
 long long int get_deadline(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -124,15 +124,15 @@ long long int get_deadline(Frame *frame_pt) {
 int set_deadline(Frame *frame_pt, long long int deadline) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (deadline <= 0) {
-        printf("The deadline should be a positive number");
+        printf("The deadline should be a positive number\n");
         return DEADLINE_NOT_NATURAL;
     }
     if (deadline > frame_pt->period) {
-        printf("The deadline cannot be larger than the period");
+        printf("The deadline cannot be larger than the period\n");
         return DEADLINE_LARGER_PERIOD;
     }
     
@@ -149,7 +149,7 @@ int set_deadline(Frame *frame_pt, long long int deadline) {
 int get_size(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -166,11 +166,11 @@ int get_size(Frame *frame_pt) {
 int set_size(Frame *frame_pt, int size) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (size <= 0) {
-        printf("The size should be a positive number");
+        printf("The size should be a positive number\n");
         return SIZE_NOT_NATURAL;
     }
     
@@ -187,7 +187,7 @@ int set_size(Frame *frame_pt, int size) {
 long long int get_end_to_end_delay(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -204,15 +204,15 @@ long long int get_end_to_end_delay(Frame *frame_pt) {
 int set_end_to_end_delay(Frame *frame_pt, long long int delay) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (delay <= 0) {
-        printf("The end to end delay should be a positive number");
+        printf("The end to end delay should be a positive number\n");
         return ENDTOEND_NOT_NATURAL;
     }
     if (delay > frame_pt->deadline) {
-        printf("The end to end delay should not be larger than the deadline");
+        printf("The end to end delay should not be larger than the deadline\n");
         return ENDTOEND_LARGER_DEADLINE;
     }
     
@@ -229,7 +229,7 @@ int set_end_to_end_delay(Frame *frame_pt, long long int delay) {
 long long int get_starting(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     
@@ -246,15 +246,15 @@ long long int get_starting(Frame *frame_pt) {
 int set_starting(Frame *frame_pt, long long int starting) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL_FRAME_POINTER;
     }
     if (starting < 0) {
-        printf("The starting time should be a positive number");
+        printf("The starting time should be a positive number\n");
         return STARTING_NOT_NATURAL;
     }
     if (starting >= frame_pt->deadline) {
-        printf("The starting time should not be larger than the deadline");
+        printf("The starting time should not be larger than the deadline\n");
         return STARTING_LARGER_DEADLINE;
     }
     
@@ -271,7 +271,7 @@ int set_starting(Frame *frame_pt, long long int starting) {
 int get_num_instances(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     
@@ -288,11 +288,11 @@ int get_num_instances(Offset *offset_pt) {
 int set_num_instances(Offset *offset_pt, int num_instances) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (num_instances <= 0) {
-        printf("The number of instances should be a positive number");
+        printf("The number of instances should be a positive number\n");
         return NUM_INSTANCES_NOT_NATURAL;
     }
     
@@ -309,7 +309,7 @@ int set_num_instances(Offset *offset_pt, int num_instances) {
 int get_num_replicas(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     
@@ -326,11 +326,11 @@ int get_num_replicas(Offset *offset_pt) {
 int set_replicas(Offset *offset_pt, int num_replicas) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (num_replicas < 0) {
-        printf("The number of replicas should not be negative");
+        printf("The number of replicas should not be negative\n");
         return NUM_REPLICAS_NEGATIVE;
     }
     
@@ -347,7 +347,7 @@ int set_replicas(Offset *offset_pt, int num_replicas) {
 long long int get_timeslot_size(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     
@@ -364,11 +364,11 @@ long long int get_timeslot_size(Offset *offset_pt) {
 int set_timeslot_size(Offset *offset_pt, int size) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (size <= 0) {
-        printf("The timeslot size should be positive");
+        printf("The timeslot size should be positive\n");
         return SIZE_TIMESLOT_NOT_NATURAL;
     }
     
@@ -385,7 +385,7 @@ int set_timeslot_size(Offset *offset_pt, int size) {
 Offset * get_offset_root(Frame *frame_pt) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL;
     }
     
@@ -401,7 +401,7 @@ Offset * get_offset_root(Frame *frame_pt) {
 Offset * get_next_offset(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL;
     }
     
@@ -417,7 +417,7 @@ Offset * get_next_offset(Offset *offset_pt) {
 int is_last_offset(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     
@@ -436,7 +436,7 @@ int is_last_offset(Offset *offset_pt) {
 int get_offset_link(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     
@@ -453,11 +453,11 @@ int get_offset_link(Offset *offset_pt) {
 int set_offset_link(Offset *offset_pt, int link) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (link <= 0) {
-        printf("Link identifiers should be positive");
+        printf("Link identifiers should be positive\n");
         return LINK_OFFSET_NOT_NATURAL;
     }
     
@@ -476,15 +476,15 @@ int set_offset_link(Offset *offset_pt, int link) {
 long long int get_offset(Offset *offset_pt, int num_instance, int num_replica) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (num_instance < 0) {
-        printf("The number of instances should not be negative");
+        printf("The number of instances should not be negative\n");
         return NUM_INSTANCES_NOT_NATURAL;
     }
     if (num_replica < 0) {
-        printf("The number of replicas should not be negative");
+        printf("The number of replicas should not be negative\n");
         return NUM_REPLICAS_NEGATIVE;
     }
     
@@ -503,27 +503,27 @@ long long int get_offset(Offset *offset_pt, int num_instance, int num_replica) {
 int set_offset(Offset *offset_pt, int num_instance, int num_replica, long long int value) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (num_instance < 0) {
-        printf("The number of instances should not be negative");
+        printf("The number of instances should not be negative\n");
         return NUM_INSTANCES_NOT_NATURAL;
     }
     if (num_replica < 0) {
-        printf("The number of replicas should not be negative");
+        printf("The number of replicas should not be negative\n");
         return NUM_REPLICAS_NEGATIVE;
     }
     if (num_instance >= offset_pt->num_instances) {
-        printf("The instance index is out of range");
+        printf("The instance index is out of range\n");
         return NUM_INSTANCES_OUT_RANGE;
     }
     if (num_replica >= offset_pt->num_replicas) {
-        printf("The replica index is out of range");
+        printf("The replica index is out of range\n");
         return NUM_REPLICAS_OUT_RANGE;
     }
     if (value < 0) {
-        printf("The transmission time cannot be negative");
+        printf("The transmission time cannot be negative\n");
         return TRANSMISSION_TIME_NOT_NATURAL;
     }
     
@@ -542,15 +542,15 @@ int set_offset(Offset *offset_pt, int num_instance, int num_replica, long long i
 Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL;
     }
     if (num_instance < 0) {
-        printf("The number of instances should not be negative");
+        printf("The number of instances should not be negative\n");
         return NULL;
     }
     if (num_replica < 0) {
-        printf("The number of replicas should not be negative");
+        printf("The number of replicas should not be negative\n");
         return NULL;
     }
     
@@ -568,15 +568,15 @@ Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica) {
 long long int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (num_instance < 0) {
-        printf("The number of instances should not be negative");
+        printf("The number of instances should not be negative\n");
         return NUM_INSTANCES_NOT_NATURAL;
     }
     if (num_replica < 0) {
-        printf("The number of replicas should not be negative");
+        printf("The number of replicas should not be negative\n");
         return NUM_REPLICAS_NEGATIVE;
     }
     
@@ -592,11 +592,11 @@ long long int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_rep
 int prepare_offset(Offset *offset_pt) {
     
     if (offset_pt == NULL) {
-        printf("The offset pointer is null");
+        printf("The offset pointer is null\n");
         return NULL_OFFSET_POINTER;
     }
     if (offset_pt->num_instances <= 0 || offset_pt->num_replicas < 0) {
-        printf("The offset has not be initialized properly");
+        printf("The offset has not be initialized properly\n");
         return OFFSET_VALUES_NOT_FILLED;
     }
     
@@ -624,7 +624,7 @@ int prepare_offset(Offset *offset_pt) {
 Offset * get_frame_offset_by_link(Frame *frame_pt, int link) {
     
     if (frame_pt == NULL) {
-        printf("The frame pointer is null");
+        printf("The frame pointer is null\n");
         return NULL;
     }
     

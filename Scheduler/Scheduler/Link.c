@@ -21,7 +21,7 @@
 int init_link(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     
@@ -41,11 +41,11 @@ int init_link(Link *link_pt) {
 int set_link(Link *link_pt, int speed, LinkType type) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     if (speed <= 0) {
-        printf("The given link speed has to be positive");
+        printf("The given link speed has to be positive\n");
         return SPEED_NEGATIVE;
     }
     
@@ -63,7 +63,7 @@ int set_link(Link *link_pt, int speed, LinkType type) {
 int get_link_speed(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     
@@ -80,11 +80,11 @@ int get_link_speed(Link *link_pt) {
 int set_link_speed(Link *link_pt, int speed) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     if (speed <= 0) {
-        printf("The given link speed has to be positive");
+        printf("The given link speed has to be positive\n");
         return SPEED_NEGATIVE;
     }
     
@@ -101,7 +101,7 @@ int set_link_speed(Link *link_pt, int speed) {
 LinkType get_link_type(Link *link_pt) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     
@@ -115,10 +115,10 @@ LinkType get_link_type(Link *link_pt) {
  @param type link type
  @return 0 if correct, error code otherwise
  */
-LinkType set_link_type(Link *link_pt, LinkType type) {
+int set_link_type(Link *link_pt, LinkType type) {
     
     if (link_pt == NULL) {
-        printf("The given link pointer is null");
+        printf("The given link pointer is null\n");
         return NULL_LINK_POINTER;
     }
     
