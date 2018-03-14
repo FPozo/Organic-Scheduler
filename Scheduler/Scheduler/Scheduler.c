@@ -32,6 +32,7 @@ int one_shot_scheduling(char *network_file, char *schedule_file) {
         return ERROR_PREPARING_SCHEDULER;
     }
     
+    // Init the solver
     // Create variables with their period and deadlines and such
     // Make frames to not be transmitted at the same time over the same link
     // Make sure the frames follow the selected path correctly
