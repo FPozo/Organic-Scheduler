@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		602382F8202C55900000F97B /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 602382F7202C55900000F97B /* main.c */; };
 		606BFAF2205812970067D25C /* Scheduler.c in Sources */ = {isa = PBXBuildFile; fileRef = 606BFAF1205812970067D25C /* Scheduler.c */; };
+		606BFAF520594D840067D25C /* Optimizator.c in Sources */ = {isa = PBXBuildFile; fileRef = 606BFAF420594D840067D25C /* Optimizator.c */; };
 		607A8DAB20399CDA0088659B /* Link.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DAA20399CDA0088659B /* Link.c */; };
 		607A8DAE2039A5D00088659B /* Frame.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DAD2039A5D00088659B /* Frame.c */; };
 		607A8DB1203C2EAE0088659B /* Network.c in Sources */ = {isa = PBXBuildFile; fileRef = 607A8DB0203C2EAE0088659B /* Network.c */; };
@@ -31,6 +32,8 @@
 		602382F7202C55900000F97B /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		606BFAF0205812970067D25C /* Scheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Scheduler.h; sourceTree = "<group>"; };
 		606BFAF1205812970067D25C /* Scheduler.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Scheduler.c; sourceTree = "<group>"; };
+		606BFAF320594D840067D25C /* Optimizator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Optimizator.h; sourceTree = "<group>"; };
+		606BFAF420594D840067D25C /* Optimizator.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Optimizator.c; sourceTree = "<group>"; };
 		607A8DA920399CDA0088659B /* Link.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Link.h; sourceTree = "<group>"; };
 		607A8DAA20399CDA0088659B /* Link.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Link.c; sourceTree = "<group>"; };
 		607A8DAC2039A5D00088659B /* Frame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
@@ -80,6 +83,8 @@
 				607A8DB0203C2EAE0088659B /* Network.c */,
 				606BFAF0205812970067D25C /* Scheduler.h */,
 				606BFAF1205812970067D25C /* Scheduler.c */,
+				606BFAF320594D840067D25C /* Optimizator.h */,
+				606BFAF420594D840067D25C /* Optimizator.c */,
 			);
 			path = Scheduler;
 			sourceTree = "<group>";
@@ -110,7 +115,7 @@
 		602382EC202C55900000F97B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Francisco Pozo";
 				TargetAttributes = {
 					602382F3202C55900000F97B = {
@@ -143,6 +148,7 @@
 			files = (
 				607A8DB1203C2EAE0088659B /* Network.c in Sources */,
 				606BFAF2205812970067D25C /* Scheduler.c in Sources */,
+				606BFAF520594D840067D25C /* Optimizator.c in Sources */,
 				607A8DAE2039A5D00088659B /* Frame.c in Sources */,
 				602382F8202C55900000F97B /* main.c in Sources */,
 				607A8DAB20399CDA0088659B /* Link.c in Sources */,
@@ -166,6 +172,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -173,6 +180,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -221,6 +229,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -228,6 +237,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -271,7 +281,11 @@
 					/usr/local/lib,
 					/Library/gurobi752/mac64/lib,
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz3",
+					"-lgurobi75",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -292,7 +306,11 @@
 					/usr/local/lib,
 					/Library/gurobi752/mac64/lib,
 				);
-				OTHER_LDFLAGS = "-lxml2";
+				OTHER_LDFLAGS = (
+					"-lxml2",
+					"-lz3",
+					"-lgurobi75",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

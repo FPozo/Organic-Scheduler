@@ -8,113 +8,163 @@
             <Period unit="ms">1</Period>
             <Time unit="us">1</Time>
         </Self-Healing_Protocol>
+        <Shortest_Path>1</Shortest_Path>
     </Basic_Information>
     <Topology_Description type="configurable">
-        <Node category="switch">
+        <Node category="end_system">
             <NodeID>0</NodeID>
-            <Connection>
-                <NodeID>1</NodeID>
-                <Link category="wired">
-                    <LinkID>0</LinkID>
-                    <Speed unit="MB/s">100</Speed>
-                </Link>
-            </Connection>
-            <Connection>
-                <NodeID>2</NodeID>
-                <Link category="wired">
-                    <LinkID>1</LinkID>
-                    <Speed unit="MB/s">100</Speed>
-                </Link>
-            </Connection>
-            <Connection>
-                <NodeID>3</NodeID>
-                <Link category="wired">
-                    <LinkID>2</LinkID>
-                    <Speed unit="MB/s">100</Speed>
-                </Link>
-            </Connection>
             <Connection>
                 <NodeID>4</NodeID>
                 <Link category="wired">
-                    <LinkID>3</LinkID>
-                    <Speed unit="MB/s">100</Speed>
+                    <LinkID>0</LinkID>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
             <Connection>
                 <NodeID>5</NodeID>
                 <Link category="wired">
-                    <LinkID>4</LinkID>
-                    <Speed unit="MB/s">100</Speed>
-                </Link>
-            </Connection>
-            <Connection>
-                <NodeID>6</NodeID>
-                <Link category="wired">
-                    <LinkID>5</LinkID>
-                    <Speed unit="MB/s">100</Speed>
+                    <LinkID>2</LinkID>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
         </Node>
         <Node category="end_system">
             <NodeID>1</NodeID>
             <Connection>
-                <NodeID>0</NodeID>
+                <NodeID>4</NodeID>
+                <Link category="wired">
+                    <LinkID>4</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>5</NodeID>
                 <Link category="wired">
                     <LinkID>6</LinkID>
-                    <Speed unit="MB/s">100</Speed>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
         </Node>
         <Node category="end_system">
             <NodeID>2</NodeID>
             <Connection>
-                <NodeID>0</NodeID>
+                <NodeID>4</NodeID>
                 <Link category="wired">
-                    <LinkID>7</LinkID>
-                    <Speed unit="MB/s">100</Speed>
+                    <LinkID>8</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>5</NodeID>
+                <Link category="wired">
+                    <LinkID>10</LinkID>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
         </Node>
         <Node category="end_system">
             <NodeID>3</NodeID>
             <Connection>
-                <NodeID>0</NodeID>
+                <NodeID>4</NodeID>
                 <Link category="wired">
-                    <LinkID>8</LinkID>
-                    <Speed unit="MB/s">100</Speed>
+                    <LinkID>12</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>5</NodeID>
+                <Link category="wired">
+                    <LinkID>14</LinkID>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
         </Node>
-        <Node category="end_system">
+        <Node category="switch">
             <NodeID>4</NodeID>
             <Connection>
                 <NodeID>0</NodeID>
                 <Link category="wired">
+                    <LinkID>1</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>1</NodeID>
+                <Link category="wired">
+                    <LinkID>5</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>2</NodeID>
+                <Link category="wired">
                     <LinkID>9</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>3</NodeID>
+                <Link category="wired">
+                    <LinkID>13</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>5</NodeID>
+                <Link category="wired">
+                    <LinkID>16</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
             <Connection>
                 <NodeID>6</NodeID>
                 <Link category="wired">
-                    <LinkID>10</LinkID>
+                    <LinkID>18</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
         </Node>
-        <Node category="end_system">
+        <Node category="switch">
             <NodeID>5</NodeID>
             <Connection>
                 <NodeID>0</NodeID>
                 <Link category="wired">
+                    <LinkID>3</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>1</NodeID>
+                <Link category="wired">
+                    <LinkID>7</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>2</NodeID>
+                <Link category="wired">
                     <LinkID>11</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>3</NodeID>
+                <Link category="wired">
+                    <LinkID>15</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>4</NodeID>
+                <Link category="wired">
+                    <LinkID>17</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
             <Connection>
-                <NodeID>6</NodeID>
+                <NodeID>7</NodeID>
                 <Link category="wired">
-                    <LinkID>12</LinkID>
+                    <LinkID>20</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
@@ -122,31 +172,275 @@
         <Node category="switch">
             <NodeID>6</NodeID>
             <Connection>
-                <NodeID>0</NodeID>
+                <NodeID>4</NodeID>
                 <Link category="wired">
-                    <LinkID>13</LinkID>
+                    <LinkID>19</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
+            <Connection>
+                <NodeID>7</NodeID>
+                <Link category="wired">
+                    <LinkID>22</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>8</NodeID>
+                <Link category="wired">
+                    <LinkID>24</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="switch">
+            <NodeID>7</NodeID>
             <Connection>
                 <NodeID>5</NodeID>
                 <Link category="wired">
-                    <LinkID>14</LinkID>
+                    <LinkID>21</LinkID>
                     <Speed unit="MB/s">100</Speed>
                 </Link>
             </Connection>
             <Connection>
-                <NodeID>4</NodeID>
+                <NodeID>6</NodeID>
                 <Link category="wired">
-                    <LinkID>15</LinkID>
+                    <LinkID>23</LinkID>
                     <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>8</NodeID>
+                <Link category="wired">
+                    <LinkID>28</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>9</NodeID>
+                <Link category="wired">
+                    <LinkID>26</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="switch">
+            <NodeID>8</NodeID>
+            <Connection>
+                <NodeID>6</NodeID>
+                <Link category="wired">
+                    <LinkID>25</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>7</NodeID>
+                <Link category="wired">
+                    <LinkID>29</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>9</NodeID>
+                <Link category="wired">
+                    <LinkID>30</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>32</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="switch">
+            <NodeID>9</NodeID>
+            <Connection>
+                <NodeID>7</NodeID>
+                <Link category="wired">
+                    <LinkID>27</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>8</NodeID>
+                <Link category="wired">
+                    <LinkID>31</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>44</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="switch">
+            <NodeID>10</NodeID>
+            <Connection>
+                <NodeID>8</NodeID>
+                <Link category="wired">
+                    <LinkID>33</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>36</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>12</NodeID>
+                <Link category="wired">
+                    <LinkID>38</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>13</NodeID>
+                <Link category="wired">
+                    <LinkID>42</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>14</NodeID>
+                <Link category="wired">
+                    <LinkID>46</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>15</NodeID>
+                <Link category="wired">
+                    <LinkID>50</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="switch">
+            <NodeID>11</NodeID>
+            <Connection>
+                <NodeID>9</NodeID>
+                <Link category="wired">
+                    <LinkID>35</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>37</LinkID>
+                    <Speed unit="MB/s">100</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>12</NodeID>
+                <Link category="wired">
+                    <LinkID>40</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>13</NodeID>
+                <Link category="wired">
+                    <LinkID>44</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>14</NodeID>
+                <Link category="wired">
+                    <LinkID>48</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>15</NodeID>
+                <Link category="wired">
+                    <LinkID>52</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="end_system">
+            <NodeID>12</NodeID>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>39</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>41</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="end_system">
+            <NodeID>13</NodeID>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>43</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>45</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="end_system">
+            <NodeID>14</NodeID>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>47</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>49</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+        </Node>
+        <Node category="end_system">
+            <NodeID>15</NodeID>
+            <Connection>
+                <NodeID>10</NodeID>
+                <Link category="wired">
+                    <LinkID>51</LinkID>
+                    <Speed unit="MB/s">50</Speed>
+                </Link>
+            </Connection>
+            <Connection>
+                <NodeID>11</NodeID>
+                <Link category="wired">
+                    <LinkID>53</LinkID>
+                    <Speed unit="MB/s">50</Speed>
                 </Link>
             </Connection>
         </Node>
     </Topology_Description>
     <Traffic_Description>
         <Traffic_Information>
-            <Number_Frames>10</Number_Frames>
+            <Number_Frames>20</Number_Frames>
             <Single>0.3</Single>
             <Local>0.5</Local>
             <Multi>0.1</Multi>
@@ -155,27 +449,27 @@
         <Frame_Description>
             <Frame_Type>
                 <Percentage>0.1</Percentage>
-                <Period unit="ns">20000000</Period>
-                <Deadline unit="ns">20000000</Deadline>
+                <Period unit="ns">400000</Period>
+                <Deadline unit="ns">400000</Deadline>
                 <Size unit="Bytes">1000</Size>
                 <StartingTime unit="ns">0</StartingTime>
-                <EndToEnd unit="ns">10000000</EndToEnd>
+                <EndToEnd unit="ns">200000</EndToEnd>
             </Frame_Type>
             <Frame_Type>
                 <Percentage>0.4</Percentage>
-                <Period unit="ns">40000000</Period>
-                <Deadline unit="ns">40000000</Deadline>
+                <Period unit="ns">600000</Period>
+                <Deadline unit="ns">600000</Deadline>
                 <Size unit="Bytes">500</Size>
                 <StartingTime unit="ns">0</StartingTime>
-                <EndToEnd unit="ns">10000000</EndToEnd>
+                <EndToEnd unit="ns">200000</EndToEnd>
             </Frame_Type>
             <Frame_Type>
                 <Percentage>0.5</Percentage>
-                <Period unit="ns">80000000</Period>
-                <Deadline unit="ns">80000000</Deadline>
+                <Period unit="ns">1200000</Period>
+                <Deadline unit="ns">1200000</Deadline>
                 <Size unit="Bytes">200</Size>
                 <StartingTime unit="ns">0</StartingTime>
-                <EndToEnd unit="ns">20000000</EndToEnd>
+                <EndToEnd unit="ns">500000</EndToEnd>
             </Frame_Type>
         </Frame_Description>
     </Traffic_Description>

@@ -480,6 +480,7 @@ class Network:
         self.__link_objects_list = []   # List with the link objects matching the link list
         self.__frames = []              # List with the information of all frames
         self.__paths = []               # 3 dimension path matrix, [sender][receiver][path_number]
+        self.__shortest_path = None     # If 1, only select shortest path, if 0, select all possible paths
 
     def __set_minimum_time_switch(self, minimum_time):
         """
@@ -731,7 +732,10 @@ class Network:
         """
         # Start creating the topology, with all the nodes and links and its information
         self.__create_topology()
-        self.__generate_all_simple_paths()
+        if self.__shortest_path:
+            self.__generate_all_shortest_paths()
+        else:
+            self.__generate_all_simple_paths()
         self.__generate_frames()
 
     def __add_switch(self):
@@ -922,6 +926,32 @@ class Network:
                 link = node[3][num_connection]
                 self.__add_link(node_id, connection, link.link_type, link.speed)
 
+    def __generate_all_shortest_paths(self):
+        """
+        Generate all the shortest paths from every end system to every other end system
+        """
+        for i in range(self.__graph.number_of_nodes()):
+            self.__paths.append([])
+            for j in range(self.__graph.number_of_nodes()):
+                self.__paths[i].append([])
+
+        # Iterate over all possible end systems sender and possible end systems receivers
+        for sender_id in self.__end_system_list:
+            for receiver_id in self.__end_system_list:
+                if sender_id != receiver_id:        # If not the same, find the path
+                    # Get the shortest path
+                    node_path = nx.shortest_path(self.__graph, sender_id, receiver_id)
+                    first_iteration = False
+                    previous_node = None
+                    path = []
+                    for node in node_path:  # Convert the list of nodes to list of links
+                        if not first_iteration:
+                            first_iteration = True
+                        else:  # Find the index in the link list
+                            path.append(self.__link_list.index([previous_node, node]))
+                        previous_node = node
+                    self.__paths[sender_id][receiver_id].append(path)
+
     def __generate_all_simple_paths(self):
         """
         Generate all the simple paths (no cycles) from every end system to every other end system
@@ -986,7 +1016,7 @@ class Network:
                         for second_hop in self.__link_list:
                             # If the second hope for the same node is an end system
                             if second_hop[0] == first_hop[1] and second_hop[1] in self.__end_system_list:
-                                receivers.append([second_hop[1]])
+                                receivers.append(second_hop[1])
                 if not receivers:                 # If there is not local end systems, we just find a random receiver
                     receivers = list(self.__end_system_list)
                     receivers.remove(sender)
@@ -1038,6 +1068,7 @@ class Network:
             raise Exception('Could not find the network basic information')
         self.__set_minimum_time_switch(self.__read_switch_information_xml(basic_information))
         self.__set_self_healing_protocol(self.__read_self_healing_information_xml(basic_information))
+        self.__shortest_path = int(basic_information.find('Shortest_Path').text)
 
     def __read_switch_information_xml(self, basic_information):
         """
@@ -1393,3 +1424,8 @@ class Network:
             Xml.SubElement(frame_xml, 'Size').text = str(frame.size)
             Xml.SubElement(frame_xml, 'StartingTime').text = str(frame.starting_time)
             Xml.SubElement(frame_xml, 'EndToEnd').text = str(frame.end_to_end_delay)
+            Xml.SubElement(frame_xml, 'SenderID').text = str(frame.sender_id)
+            receiver_str = ''
+            for receiver_id in frame.receivers_id:
+                receiver_str += str(receiver_id) + ';'
+            Xml.SubElement(frame_xml, 'ReceiversID').text = receiver_str[:-1]

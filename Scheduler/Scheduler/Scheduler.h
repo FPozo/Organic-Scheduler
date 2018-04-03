@@ -17,13 +17,23 @@
 #define Scheduler_h
 
 #include <stdio.h>
-#include "Network.h"
+//#include "Network.h"
+#include "Optimizator.h"
 
 #endif /* Scheduler_h */
 
 /* ERROR CODE DEFINITIONS */
 
-#define ERROR_PREPARING_SCHEDULER -101
+#define ERROR_SCHEDULING_ONE_SHOT -101
+#define CONFIGURATION_NOT_FOUND -102
+#define TIMELIMIT_NOT_FOUND -103
+#define OPTIMIZATION_NOT_FOUND -104
+#define PATH_SELECTOR_NOT_FOUND -105
+#define FRAME_DISTANCE_WEIGTH_NOT_FOUND -106
+#define LINK_DISTANCE_WEIGTH_NOT_FOUND -107
+#define TUNE_NOT_FOUND -108
+#define TUNE_LIMIT_TIME_NOT_FOUND -109
+#define SOLVER_NOT_FOUND -110
 
 /**
  Produces the schedule solving all constraints in one call to the Solver for a given network.
@@ -36,6 +46,7 @@
  
  @param network_file name of the file with the description of the network
  @param schedule_file name of the file with the scheduled network
+ @param configuration_file name of the file with the schedule configuration
  @return 0 if the schedule was found, error code otherwise
  */
-int one_shot_scheduling(char *network_file, char *schedule_file);
+int one_shot_scheduling(char *network_file, char *schedule_file, char *configuration_file);

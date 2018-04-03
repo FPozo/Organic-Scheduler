@@ -29,7 +29,7 @@
 typedef struct Offset {
     long long int **offset;             // Matrix with the transmission times in ns
     Z3_ast **z_offset;                  // Z3 matrix with the transmission times in ns
-    long long int **g_offset;           // Gurobi matrix with the transmission times in ns
+    int **g_offset;                     // Gurobi matrix with the transmission times in ns
     int num_instances;                  // Number of instances of the offset (hyperperiod / period frame)
     int num_replicas;                   // Number of replicas of the offset (retransmissions due to wireless)
     int timeslots;                      // Number of ns to transmit in the link
@@ -47,6 +47,9 @@ typedef struct Frame {
     long long int deadline;             // Deadline of the frame in ns
     long long int end_to_end_delay;     // Maximum end to end delay from a frame being sent to being received in ns
     long long int starting;             // Starting time of the frame in ns
+    int sender_id;                      // ID of the end system sender
+    int *receivers_id;                   // Array of ID of the end system receivers
+    int num_receivers;                  // Number of end system receivers
     Offset *offset_ls;                  // Pointer to the roof of the offsets linked list
     Offset **offset_hash;               // Array that stores the offsets with index the link identifier (to accelerate)
 }Frame;
@@ -63,6 +66,9 @@ typedef struct Frame {
 #define DEADLINE_LARGER_PERIOD -11
 #define ENDTOEND_LARGER_DEADLINE -12
 #define STARTING_LARGER_DEADLINE -13
+#define SENDER_ID_NOT_NATURAL -14
+#define RECEIVER_ID_NOT_NATURAL -15
+#define NUM_RECEIVERS_NOT_NATURAL -16
 
 #define NULL_OFFSET_POINTER -21
 #define NUM_INSTANCES_NOT_NATURAL -22
@@ -92,6 +98,15 @@ int init_frame(Frame *frame_pt);
  @return 0 if done correctly, error code otherwise
  */
 int init_hash(Frame *frame_pt, int num_links);
+
+/**
+ Add the current offset to the frame hash accelerator
+ 
+ @param frame_pt pointer to the frame
+ @param offset_pt pointer to the offset
+ @return 0 if done correctly, error code otherwise
+ */
+int add_accelerator_hash(Frame *frame_pt, Offset *offset_pt);
 
 /**
  Get the period of the given frame
@@ -178,6 +193,43 @@ long long int get_starting(Frame *frame_pt);
  */
 int set_starting(Frame *frame_pt, long long int starting);
 
+int get_num_receivers(Frame *frame_pt);
+
+/**
+ Get the sender identifier
+
+ @param frame_pt pointer to the frame
+ @return sender identifier, error code otherwise
+ */
+int get_sender_id(Frame *frame_pt);
+
+/**
+ Set the sender identifier
+
+ @param frame_pt pointer to the frame
+ @param sender_id sender identifier
+ @return 0 if done correctly, error code otherwise
+ */
+int set_sender_id(Frame *frame_pt, int sender_id);
+
+/**
+ Get receiver identifier
+
+ @param frame_pt pointer to the frame
+ @return receiver id
+ */
+int get_receiver_id(Frame *frame_pt, int receiver_id);
+
+/**
+ Set the array of receivers identifiers
+
+ @param frame_pt pointer to the frame
+ @param receivers_id_array pointer where the array of receivers is stored
+ @param num_receivers number of receivers in the array
+ @return 0 if done correctly, error code otherwise
+ */
+int set_receivers_id(Frame *frame_pt, int *receivers_id_array, int num_receivers);
+
 /**
  Get the number of instances of the offset
  
@@ -254,6 +306,16 @@ Offset * get_next_offset(Offset *offset_pt);
 int is_last_offset(Offset *offset_pt);
 
 /**
+ For the given Offsets Linked List, adds the offsets if is new.
+ If it not new and already present, returns the pointer to the found one
+ 
+ @param offset_pt offset linked list root
+ @param link link to find or add
+ @return the offset pointer to the offset created or found
+ */
+Offset * add_new_offset(Offset *offset_pt, int link);
+
+/**
  Get the link of the given offset
  
  @param offset_pt pointer of the offset
@@ -302,6 +364,17 @@ int set_offset(Offset *offset_pt, int num_instance, int num_replica, long long i
 Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica);
 
 /**
+ Set a Z3 offset with the given contraint
+ 
+ @param offset_pt pointer to the offset
+ @param num_instance number
+ @param num_replica number
+ @param z3_constraint z3 constraint to add
+ @return 0 if done correctly, error otherwise
+ */
+int set_z3_offset(Offset *offset_pt, int num_instance, int num_replica, Z3_ast z3_constraint);
+
+/**
  Get gurobi offset of the given instance and replica
  
  @param offset_pt pointer to the offset
@@ -309,7 +382,18 @@ Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica);
  @param num_replica number
  @return long long int offset constraint of gurobi, error code otherwise
  */
-long long int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica);
+int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica);
+
+/**
+ Set a Gurobi offset with the given contraint
+ 
+ @param offset_pt pointer to the offset
+ @param num_instance number
+ @param num_replica number
+ @param gurobi_constraint z3 constraint to add
+ @return 0 if done correctly, error otherwise
+ */
+int set_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica, int gurobi_constraint);
 
 /**
  Allocates the memory needed and prepare all variables for the used to be ready to be used

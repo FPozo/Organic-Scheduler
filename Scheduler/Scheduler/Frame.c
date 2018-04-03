@@ -30,7 +30,9 @@ int init_frame(Frame *frame_pt) {
     frame_pt->deadline = -1;
     frame_pt->period = -1;
     frame_pt->size = -1;
-    frame_pt->offset_ls = NULL;
+    frame_pt->offset_ls = malloc(sizeof(Offset));
+    frame_pt->offset_ls->next_offset_pt = NULL;
+    frame_pt->offset_ls->link = -1;
     frame_pt->offset_hash = NULL;
     return 0;
 }
@@ -57,6 +59,28 @@ int init_hash(Frame *frame_pt, int num_links) {
     for (int i = 0; i < num_links; i++) {
         frame_pt->offset_hash[i] = NULL;
     }
+    return 0;
+}
+
+/**
+ Add the current offset to the frame hash accelerator
+ 
+ @param frame_pt pointer to the frame
+ @param offset_pt pointer to the offset
+ @return 0 if done correctly, error code otherwise
+ */
+int add_accelerator_hash(Frame *frame_pt, Offset *offset_pt) {
+    
+    if (frame_pt == NULL) {
+        printf("The frame pointer is null\n");
+        return NULL_FRAME_POINTER;
+    }
+    if (offset_pt == NULL) {
+        printf("The offset pointer is null\n");
+        return NULL_OFFSET_POINTER;
+    }
+    
+    frame_pt->offset_hash[offset_pt->link] = offset_pt;
     return 0;
 }
 
@@ -263,6 +287,91 @@ int set_starting(Frame *frame_pt, long long int starting) {
 }
 
 /**
+ Get the sender identifier
+ 
+ @param frame_pt pointer to the frame
+ @return sender identifier, error code otherwise
+ */
+int get_sender_id(Frame *frame_pt) {
+    
+    if (frame_pt == NULL) {
+        printf("The frame pointer is null\n");
+        return NULL_FRAME_POINTER;
+    }
+    
+    return frame_pt->sender_id;
+}
+
+/**
+ Set the sender identifier
+ 
+ @param frame_pt pointer to the frame
+ @param sender_id sender identifier
+ @return 0 if done correctly, error code otherwise
+ */
+int set_sender_id(Frame *frame_pt, int sender_id) {
+    
+    if (frame_pt == NULL) {
+        printf("The frame pointer is null\n");
+        return NULL_FRAME_POINTER;
+    }
+    if (sender_id < 0) {
+        printf("The sender identifier should be a positive number\n");
+        return SENDER_ID_NOT_NATURAL;
+    }
+    
+    frame_pt->sender_id = sender_id;
+    return 0;
+}
+
+/**
+ Get  receiver identifier
+ 
+ @param frame_pt pointer to the frame
+ @return array with receivers, error code otherwise
+ */
+int get_receiver_id(Frame *frame_pt, int receiver_id) {
+    
+    return frame_pt->receivers_id[receiver_id];
+
+}
+
+int get_num_receivers(Frame *frame_pt) {
+    return frame_pt->num_receivers;
+}
+
+/**
+ Set the array of receivers identifiers
+ 
+ @param frame_pt pointer to the frame
+ @param receivers_id_array pointer where the array of receivers is stored
+ @param num_receivers number of receivers in the array
+ @return 0 if done correctly, error code otherwise
+ */
+int set_receivers_id(Frame *frame_pt, int *receivers_id_array, int num_receivers) {
+    
+    if (frame_pt == NULL) {
+        printf("The frame pointer is null\n");
+        return NULL_FRAME_POINTER;
+    }
+    if (num_receivers <= 0) {
+        printf("The number of receivers should be a posisite number\n");
+        return NUM_RECEIVERS_NOT_NATURAL;
+    }
+    
+    frame_pt->receivers_id = malloc(sizeof(int) * num_receivers);   // Allocate the memory
+    frame_pt->num_receivers = num_receivers;
+    for (int receiver_id = 0; receiver_id < num_receivers; receiver_id++) {
+        if (receivers_id_array[receiver_id] < 0) {
+            printf("The receiver id should be a positive number\n");
+            return RECEIVER_ID_NOT_NATURAL;
+        }
+        frame_pt->receivers_id[receiver_id] = receivers_id_array[receiver_id];
+    }
+    return 0;
+}
+
+/**
  Get the number of instances of the offset
  
  @param offset_pt pointer to the offset
@@ -428,6 +537,40 @@ int is_last_offset(Offset *offset_pt) {
 }
 
 /**
+ For the given Offsets Linked List, adds the offsets if is new.
+ If it not new and already present, returns the pointer to the found one
+ 
+ @param offset_pt offset linked list root
+ @param link link to find or add
+ @return the offset pointer to the offset created or found, NULL if already exists
+ */
+Offset * add_new_offset(Offset *offset_pt, int link) {
+    
+    // While there are offsets to search and the link is no the same, we keep searching until the last offset
+    while (offset_pt->next_offset_pt != NULL && offset_pt->link != link) {
+        offset_pt = offset_pt->next_offset_pt;
+    }
+    
+    // If the link is not in the linked list, we create a new offset and add it, if not we just return the found offset
+    if (offset_pt->link != link) {
+        offset_pt->g_offset = NULL;
+        offset_pt->link = link;
+        offset_pt->next_offset_pt = malloc(sizeof(Offset));     // We create the next offset as empty
+        offset_pt->next_offset_pt->next_offset_pt = NULL;
+        offset_pt->next_offset_pt->link = -1;                   // Just in case to control the link value
+        offset_pt->num_instances = 0;
+        offset_pt->num_replicas = 0;
+        offset_pt->offset = NULL;
+        offset_pt->timeslots = 0;
+        offset_pt->z_offset = NULL;
+    } else {
+        return NULL;
+    }
+    
+    return offset_pt;
+}
+
+/**
  Get the link of the given offset
  
  @param offset_pt pointer of the offset
@@ -558,6 +701,34 @@ Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica) {
 }
 
 /**
+ Set a Z3 offset with the given contraint
+
+ @param offset_pt pointer to the offset
+ @param num_instance number
+ @param num_replica number
+ @param z3_constraint z3 constraint to add
+ @return 0 if done correctly, error otherwise
+ */
+int set_z3_offset(Offset *offset_pt, int num_instance, int num_replica, Z3_ast z3_constraint) {
+    
+    if (offset_pt == NULL) {
+        printf("The offset pointer is null\n");
+        return NULL_OFFSET_POINTER;
+    }
+    if (num_instance < 0) {
+        printf("The number of instances should not be negative\n");
+        return NUM_INSTANCES_NOT_NATURAL;
+    }
+    if (num_replica < 0) {
+        printf("The number of replicas should not be negative\n");
+        return NUM_REPLICAS_OUT_RANGE;
+    }
+    
+    offset_pt->z_offset[num_instance][num_replica] = z3_constraint;
+    return 0;
+}
+
+/**
  Get gurobi offset of the given instance and replica
  
  @param offset_pt pointer to the offset
@@ -565,7 +736,7 @@ Z3_ast get_z3_offset(Offset *offset_pt, int num_instance, int num_replica) {
  @param num_replica number
  @return long long int offset constraint of gurobi, error code otherwise
  */
-long long int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica) {
+int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica) {
     
     if (offset_pt == NULL) {
         printf("The offset pointer is null\n");
@@ -581,6 +752,34 @@ long long int get_gurobi_offset(Offset *offset_pt, int num_instance, int num_rep
     }
     
     return offset_pt->g_offset[num_instance][num_replica];
+}
+
+/**
+ Set a Gurobi offset with the given contraint
+ 
+ @param offset_pt pointer to the offset
+ @param num_instance number
+ @param num_replica number
+ @param gurobi_constraint z3 constraint to add
+ @return 0 if done correctly, error otherwise
+ */
+int set_gurobi_offset(Offset *offset_pt, int num_instance, int num_replica, int gurobi_constraint) {
+    
+    if (offset_pt == NULL) {
+        printf("The offset pointer is null\n");
+        return NULL_OFFSET_POINTER;
+    }
+    if (num_instance < 0) {
+        printf("The number of instances should not be negative\n");
+        return NUM_INSTANCES_NOT_NATURAL;
+    }
+    if (num_replica < 0) {
+        printf("The number of replicas should not be negative\n");
+        return NUM_REPLICAS_OUT_RANGE;
+    }
+    
+    offset_pt->g_offset[num_instance][num_replica] = gurobi_constraint;
+    return 0;
 }
 
 /**
@@ -603,11 +802,11 @@ int prepare_offset(Offset *offset_pt) {
     // Dynamically allocate an array for the offsets of size [num_instance][num_replica + 1]
     offset_pt->offset = malloc(sizeof(long long int *) * offset_pt->num_instances);
     offset_pt->z_offset = malloc(sizeof(Z3_ast *) * offset_pt->num_instances);
-    offset_pt->g_offset = malloc(sizeof(long long int *) * offset_pt->num_instances);
+    offset_pt->g_offset = malloc(sizeof(int *) * offset_pt->num_instances);
     for (int i = 0; i < offset_pt->num_instances; i++) {
-        offset_pt->offset[i] = malloc(sizeof(long long int) * (offset_pt->num_replicas + 1));
-        offset_pt->z_offset[i] = malloc(sizeof(Z3_ast) * (offset_pt->num_replicas + 1));
-        offset_pt->g_offset[i] = malloc(sizeof(long long int) * (offset_pt->num_replicas + 1));
+        offset_pt->offset[i] = malloc(sizeof(long long int) * (offset_pt->num_replicas));
+        offset_pt->z_offset[i] = malloc(sizeof(Z3_ast) * (offset_pt->num_replicas));
+        offset_pt->g_offset[i] = malloc(sizeof(int) * (offset_pt->num_replicas));
     }
     return 0;
 }

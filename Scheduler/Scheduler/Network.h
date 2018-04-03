@@ -100,6 +100,9 @@ typedef struct PathSender {
 #define NO_NODES_FOUND -226
 #define NO_NODE_ID_FOUND -227
 #define UNDEFINED_NODE_TYPE -228
+#define NO_FRAME_SENDER_ID_FOUND -229
+#define NO_FRAME_RECEIVER_ID_FOUND -230
+#define NO_PERIODS -231
 
 
 /**
@@ -224,10 +227,14 @@ Frame * get_frame(int frame_id);
  @param size int of the size in bytes
  @param starting_time long long int of the starting time of the frame in ns
  @param end_to_end long long int of the end to end delay in ns
+ @param sender_id sender identifier
+ @param receivers_id pointer to the array of receivers id
+ @param num_receivers number of receivers in the array
  @return 0 if done correctly, error code if index out of array of frames
  */
 int add_frame_information(int frame_id, long long int period, long long int deadline, int size,
-                          long long int starting_time, long long int end_to_end);
+                          long long int starting_time, long long int end_to_end, int sender_id, int *receivers_id,
+                          int num_receivers);
 
 /**
  Get the frame pointer given the link id
@@ -255,6 +262,15 @@ int add_link(int link_id, int speed, LinkType link_type);
 int init_path_structure(void);
 
 /**
+ Get the number of possible paths that connect the given sender and receiver
+
+ @param sender_id sender end system id
+ @param receiver_id receiver end system id
+ @return the number of possible paths, error code otherwise
+ */
+int get_num_paths(int sender_id, int receiver_id);
+
+/**
  Get the path given the path id for the one end system to another
 
  @param sender_id end system sender id
@@ -274,6 +290,25 @@ Path * get_path(int sender_id, int receiver_id, int path_id);
  @return 0 if done correctly, error code otherwise
  */
 int add_path(int sender_id, int receiver_id, int* path, int len_path);
+
+/**
+ Get the hyper_period of the network
+
+ @return hyper_period of the network
+ */
+long long int get_hyper_period(void);
+
+/**
+ Get the utilization of the link with the maximum utilization
+
+ @return maximum utilization in any link
+ */
+float get_max_link_utilization(void);
+
+/**
+ Init all the needed variables in the network to start the scheduling, such as frame appearances, instances and similar
+ */
+void initialize_network(void);
 
 /* INPUT OUTPUT FUNCTIONS */
 

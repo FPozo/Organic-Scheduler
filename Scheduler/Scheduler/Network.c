@@ -23,10 +23,50 @@ int number_end_systems = 0;                 // Number of end systems in the netw
 int number_links = 0;                       // Number of links in the network
 Frame *frames;                              // Array with all the frames in the network
 Link *links;                                // Array with all the links in the network
+float *links_utilization;                  // Utilization of all links in the network [0.0,1-0]
+float max_link_utilization;
 PathSender *paths;                          // Array of end systems Sender structs to all other possible end systems
 int *end_systems_hash;                      // Array that given the node id, matches the end system in the "paths" array
+long long int *different_periods;           // Array with the different periods for all frames
+int num_different_periods = 0;              // Number of different periods
+long long int hyper_period;                 // Hyper-period needed for the schedule
 
 /* PRIVATE FUNCTIONS */
+
+/**
+ GCD function needed to calculate the hyper period
+
+ @param a first integer value
+ @param b second integer value
+ @return gcd value obtained
+ */
+long long int gcd(long long int a, long long int b) {
+    if (b == 0) {
+        return a;
+    }
+    return gcd(b, a % b);
+}
+
+/**
+ Calculate the hyper-period for the given different frame periods
+
+ @return hyper-period obtained, error code otherwise
+ */
+long long int calculate_hyper_period() {
+    
+    if (num_different_periods == 0) {
+        printf("There should be at least one period\n");
+        return NO_PERIODS;
+    }
+    
+    // Iterate for the LCM of 2 values => a*b/gcd(a,b)
+    long long int hyper_period = different_periods[0];
+    for (int i = 1; i < num_different_periods; i++) {
+        hyper_period = (different_periods[i] * hyper_period) / gcd(different_periods[i], hyper_period);
+    }
+    
+    return hyper_period;
+}
 
 /**
  Read the switches information of the network from the given xml tree pointer
@@ -466,7 +506,9 @@ int read_frames_information_xml(xmlDocPtr file_network) {
     
     // Init variables for the general information of a frame
     long long int period, deadline, end_to_end, starting_time;
-    int frame_id, size;
+    int frame_id, size, sender_id, num_receivers, node_char_it;
+    char *node_char;
+    int *receivers_id = NULL;
     
     context = xmlXPathNewContext(file_network);
     result = xmlXPathEvalExpression((xmlChar*) "/Network/Frames/Frame", context);
@@ -554,8 +596,45 @@ int read_frames_information_xml(xmlDocPtr file_network) {
         xmlFree(value);
         xmlXPathFreeObject(result_frame);
         
-        add_frame_information(frame_id, period, deadline, size, starting_time, end_to_end);
+        // Search the sender id of the current frame
+        result_frame = xmlXPathEvalExpression((xmlChar*) "SenderID", context_frame);
+        if (result_frame->nodesetval->nodeTab == NULL) {
+            printf("The Network xml file is wrongly cobtructed, no frame SenderID found\n");
+            return NO_FRAME_SENDER_ID_FOUND;
+        }
+        value = xmlNodeListGetString(file_network, result_frame->nodesetval->nodeTab[0]->xmlChildrenNode, 1);
+        sender_id = atoi((const char*) value);
+        // Free xml structures
+        xmlFree(value);
+        xmlXPathFreeObject(result_frame);
         
+        // Search the receivers id of the current frame
+        result_frame = xmlXPathEvalExpression((xmlChar*) "ReceiversID", context_frame);
+        if (result_frame->nodesetval->nodeTab == NULL) {
+            printf("The Network xml file is wrongly cobtructed, no frame ReceiversID found\n");
+            return NO_FRAME_RECEIVER_ID_FOUND;
+        }
+        value = xmlNodeListGetString(file_network, result_frame->nodesetval->nodeTab[0]->xmlChildrenNode, 1);
+        // Parse the string into an array of receivers id
+        node_char = strtok((char*) value, ";");
+        node_char_it = 0;
+        receivers_id = NULL;
+        while (node_char != NULL) {
+            receivers_id = realloc(receivers_id, sizeof(int) * (node_char_it + 1));
+            receivers_id[node_char_it] = atoi(node_char);
+            node_char = strtok(NULL, ";");
+            node_char_it++;
+        }
+        free(node_char);
+        num_receivers = node_char_it;
+        // Free xml structures
+        xmlFree(value);
+        xmlXPathFreeObject(result_frame);
+        
+        add_frame_information(frame_id, period, deadline, size, starting_time, end_to_end, sender_id, receivers_id,
+                              num_receivers);
+        
+        free(receivers_id);
         xmlXPathFreeContext(context_frame);
     }
     
@@ -669,6 +748,10 @@ int set_num_links(int num_links) {
     }
     number_links = num_links;
     links = malloc(sizeof(Link) * num_links);               // Init the array of links now that we now the number
+    links_utilization = malloc(sizeof(float) * num_links);
+    for (int link_it = 0; link_it < num_links; link_it++) {
+        links_utilization[link_it] = 0.0;
+    }
     return 0;
 }
 
@@ -774,16 +857,22 @@ Frame * get_frame(int frame_id) {
  @param size int of the size in bytes
  @param starting_time long long int of the starting time of the frame in ns
  @param end_to_end long long int of the end to end delay in ns
- @return 0 if done correctly, -1 if index out of array of frames
+ @param sender_id sender identifier
+ @param receivers_id pointer to the array of receivers id
+ @param num_receivers number of receivers in the array
+ @return 0 if done correctly, error code if index out of array of frames
  */
 int add_frame_information(int frame_id, long long int period, long long int deadline, int size,
-                          long long int starting_time, long long int end_to_end) {
+                          long long int starting_time, long long int end_to_end, int sender_id, int *receivers_id,
+                          int num_receivers) {
     
     // Check if we allocated memory for the new frame
     if (frame_id >= number_frames) {
         printf("There are more frames that the stated in the network\n");
         return NO_MORE_FRAMES_ALLOCATED;
     }
+    
+    init_frame(&frames[frame_id]);      // Init frame structures
     
     // Save all the information
     if (set_period(&frames[frame_id], period) < 0) {
@@ -798,17 +887,47 @@ int add_frame_information(int frame_id, long long int period, long long int dead
         printf("Error adding the frame size\n");
         return ERROR_ADDING_FRAME;
     }
-    if (set_starting(&frames[frame_id], starting_time)) {
+    if (set_starting(&frames[frame_id], starting_time) < 0) {
         printf("Error adding the frame starting time\n");
         return ERROR_ADDING_FRAME;
     }
-    if (set_end_to_end_delay(&frames[frame_id], end_to_end)) {
+    if (set_end_to_end_delay(&frames[frame_id], end_to_end) < 0) {
         printf("Error adding the frame end to end delay\n");
+        return ERROR_ADDING_FRAME;
+    }
+    if (set_sender_id(&frames[frame_id], sender_id) < 0) {
+        printf("Error adding the frame sender id\n");
+        return ERROR_ADDING_FRAME;
+    }
+    if (set_receivers_id(&frames[frame_id], receivers_id, num_receivers) < 0) {
+        printf("Error adding the frame receivers id\n");
         return ERROR_ADDING_FRAME;
     }
     
     // Init also the hash array to accelerate the search of link offsets
     init_hash(&frames[frame_id], number_links);
+    
+    // Save the period to calculate the needed schedule hyper-period
+    if (num_different_periods == 0) {   // If is the first period, save it
+        num_different_periods++;
+        different_periods = malloc(sizeof(long long int) * num_different_periods);
+        different_periods[num_different_periods - 1] = period;
+    } else {                            // If not, search if the period already appeared
+        int period_it = 0;
+        int periods_found = 0;
+        while (period_it < num_different_periods && periods_found == 0) {
+            if (different_periods[period_it] == period) {   // If it did, stop search and do nothing
+                periods_found = 1;
+            }
+            period_it++;
+        }
+        if (periods_found == 0) {       // If we did not find it, it is new and we add it
+            num_different_periods++;
+            different_periods = realloc(different_periods, sizeof(long long int) * num_different_periods);
+            different_periods[num_different_periods - 1] = period;
+        }
+    }
+    
     return 0;
 }
 
@@ -879,6 +998,29 @@ int init_path_structure(void) {
 }
 
 /**
+ Get the number of possible paths that connect the given sender and receiver
+ 
+ @param sender_id sender end system id
+ @param receiver_id receiver end system id
+ @return the number of possible paths, error code otherwise
+ */
+int get_num_paths(int sender_id, int receiver_id) {
+    
+    int sender_pos, receiver_pos;
+    
+    // Check if the ids are in range
+    if (sender_id < 0 || sender_id >= (number_end_systems + number_switches) || receiver_id < 0 ||
+        receiver_id >= number_end_systems + number_switches) {
+        printf("The path does not exist\n");
+        return PATH_DOES_NOT_EXIST;
+    }
+    // Convert the given ids to the positions in the path structure
+    sender_pos = end_systems_hash[sender_id];
+    receiver_pos = end_systems_hash[receiver_id];
+    return paths[sender_pos].receivers[receiver_pos].num_paths;
+}
+
+/**
  Get the path given the path id for the one end system to another
  
  @param sender_id end system sender id
@@ -891,7 +1033,8 @@ Path * get_path(int sender_id, int receiver_id, int path_id) {
     int sender_pos, receiver_pos;
     
     // Check if the ids are in range
-    if (sender_id < 0 ||sender_id >= number_end_systems || receiver_id < 0 || receiver_id >= number_end_systems) {
+    if (sender_id < 0 ||sender_id >= number_end_systems + number_switches || receiver_id < 0 ||
+        receiver_id >= number_end_systems + number_switches) {
         printf("The path does not exist\n");
         return NULL;
     }
@@ -899,11 +1042,11 @@ Path * get_path(int sender_id, int receiver_id, int path_id) {
     // Convert the given ids to the positions in the path structure
     sender_pos = end_systems_hash[sender_id];
     receiver_pos = end_systems_hash[receiver_id];
-    if (paths[sender_pos].receivers[receiver_pos].num_paths >= path_id) {
+    if (path_id >= paths[sender_pos].receivers[receiver_pos].num_paths) {
         printf("The path does not exist, there are not that many paths between both end systems\n");
         return NULL;
     }
-    return &paths[sender_pos].receivers[sender_pos].paths[path_id];
+    return &paths[sender_pos].receivers[receiver_pos].paths[path_id];
 }
 
 /**
@@ -941,6 +1084,87 @@ int add_path(int sender_id, int receiver_id, int* path, int len_path) {
         paths[sender_pos].receivers[receiver_pos].paths[num_paths - 1].path[i] = path[i];
     }
     return 0;
+}
+
+/**
+ Get the hyper_period of the network
+ 
+ @return hyper_period of the network
+ */
+long long int get_hyper_period(void) {
+    
+    return hyper_period;
+}
+
+/**
+ Get the utilization of the link with the maximum utilization
+ 
+ @return maximum utilization in any link
+ */
+float get_max_link_utilization(void) {
+    
+    float max_ut = 0.0;
+    
+    for (int link_it = 0; link_it < get_num_links(); link_it++) {
+        if (links_utilization[link_it] > max_ut) {
+            max_ut = links_utilization[link_it];
+        }
+    }
+    return max_ut;
+}
+
+/**
+ Init all the needed variables in the network to start the scheduling, such as frame appearances, instances and similar
+ */
+void initialize_network(void) {
+    
+    int instances, num_receivers, num_paths, time;
+    int receiver_id;
+    float ut;
+    Path *path;
+    Offset *offset_pt, *new_offset_pt;
+    
+    hyper_period = calculate_hyper_period();        // Get the hyper period
+    
+    // For all frames, init the offset to -1, and set the appearances and the replicas depending on its period and
+    // if they are wired or wireless link transmissions, also time for transmission
+    for (int frame_id = 0; frame_id < number_frames; frame_id++) {
+        
+        // Calculate the number of frame instances depending on the hyper-period and the frame period
+        instances = (int) (hyper_period / get_period(&frames[frame_id]));
+        offset_pt = get_offset_root(&frames[frame_id]);
+        // For all the possible paths, create the possible offsets
+        num_receivers = get_num_receivers(&frames[frame_id]);
+        for (int receiver_it = 0; receiver_it < num_receivers; receiver_it++) {     // For all receivers
+            receiver_id = get_receiver_id(&frames[frame_id], receiver_it);
+            num_paths = get_num_paths(get_sender_id(&frames[frame_id]), receiver_id);
+            for (int path_it = 0; path_it < num_paths; path_it++) {                 // For all paths
+                path = get_path(get_sender_id(&frames[frame_id]), receiver_id, path_it);
+                for (int link_it = 0; link_it < path->length; link_it++) {           // For all links in path
+                    new_offset_pt = add_new_offset(offset_pt, path->path[link_it]);  // Add the new offset
+                    if (new_offset_pt != NULL) {       // If the offset is new add needed information
+                        // Add the new offset to the hash acceleration table
+                        add_accelerator_hash(&frames[frame_id], new_offset_pt);
+                        set_num_instances(new_offset_pt, instances);
+                        if (links[get_offset_link(new_offset_pt)].type == wired) {
+                            set_replicas(new_offset_pt, 1);                         // Only "1" replica if is wired
+                        }
+                        // Calculate the time to transmit as BytesFrame / Speed in MB/s * 10^6 (to get to ns)
+                        time = (get_size(&frames[frame_id]) * 1000) /
+                                get_link_speed(&links[get_offset_link(new_offset_pt)]);
+                        set_timeslot_size(new_offset_pt, time);
+                        
+                        // At the end, we prepare the offset to be ready, which allocates for transmission times
+                        prepare_offset(new_offset_pt);
+                        
+                        // Add utilization in the link
+                        ut = (time * instances)/ (float)get_hyper_period();
+                        links_utilization[get_offset_link(new_offset_pt)] += ut;
+                    }
+                }
+            }
+        }
+    }
 }
 
 /**
